@@ -4,8 +4,7 @@ class IndexController extends BaseController  {
 
 
         $a = new \NodeModel();
-        var_dump($a);
-
+     
    	 
     }
 
