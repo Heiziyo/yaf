@@ -4,8 +4,9 @@ class IndexController extends BaseController  {
 
 
         $a = new \NodeModel();
-     
-   	 
+        $sql = "select * from oa_node ;";
+        $q = $a->querys($sql);
+   	    var_dump($q);
     }
 
 
