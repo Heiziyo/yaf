@@ -15,7 +15,6 @@ class Db{
 		    die();
 		}
 	}
-
 	public function querys($sql = "")
 		{
 

@@ -7,7 +7,7 @@ class IndexController extends Yaf_Controller_Abstract {
    }
    public function hAction()
    {
-   	echo 3333;
+ 
    	   Yaf_Dispatcher::getInstance()->autoRender(FALSE); 
    }
 }
