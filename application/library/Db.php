@@ -10,20 +10,18 @@ class Db{
 		
 		try {
 		    $this->content = new PDO('mysql:host=localhost;dbname=yafoa', "root", "root");
+		    $this->content->exec("SET names utf8");
 		} catch (PDOException $e) {
 		    print "Error!: " . $e->getMessage() . "<br/>";
 		    die();
 		}
 	}
-	public function querys($sql = "")
+	public function query($sql = "")
 		{
 
-			$tables = $this->table_name;
+			
 			$r =  $this->content->query($sql);
-			$data = array();
-			foreach ($r as $key => $value) {
-				$data[$key] = $value;
-			}
-			return $data;
+			
+			
 		}
 }
