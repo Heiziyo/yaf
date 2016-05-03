@@ -6,7 +6,7 @@ class Model{
 			
 
 
-			var_dump($this);
+			
 	}
 
 }

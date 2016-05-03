@@ -44,11 +44,18 @@
                         </div>
                     </div>
                     <div class="ibox-content">
-                        <h2>
-                            Bootstrap<br/>
-                        </h2>
-                        <p>
-                            简洁、直观、强悍的前端开发框架，让web开发更迅速、简单。</p>
+                        <table class="table">
+                        	<thead>
+                        		<tr>
+	                        		<td width="20%">ID</td>
+	                        		<td width="50%">节点名称</td>
+	                        		<td width="20%">管理</td>	                                 		
+	                        	</tr>
+                        	</thead>
+                        	<tbody>
+                        		<?php echo $tree;?>
+                        	</tbody>
+                        </table>
                     </div>
                 </div>
             </div>

@@ -48,9 +48,7 @@
                                 <div class="col-sm-10">
                                     <select class="form-control m-b" name="parentid">
                                         <option value="0">作为一级节点</option>
-                                        <option>选项 2</option>
-                                        <option>选项 3</option>
-                                        <option>选项 4</option>
+                                       <?php echo $tree; ?>
                                     </select>
                                 </div>
                             </div>
