@@ -17,7 +17,7 @@ $application = new Yaf_Application("conf/application.ini");
  * 则$response会被自动输出, 此处也不需要再次输出Response
  */
 $response = $application
-
+	->bootstrap()/*bootstrap是可选的调用*/
 	->run()/*执行*/;
 
 ?>

@@ -5,20 +5,20 @@ class NodeController extends BaseController{
 	public function indexAction()
 	{
 		$node = new NodeModel();
-		$tree = new Tree();
-		$sql = "select * from `oa_node`";
-		$res = $node->query($sql)->results();
-		$data = array();
-		foreach ($res as $k=>$v){
-			$data[$k]['id'] = $v['id'];
-			$data[$k]['parentid']=  $v['parentid'];
-			$data[$k]['name'] = $v['name'];
-			$data[$k]['manage'] = "删除|修改";
-		}
-		$str = "<tr><td>\$id</td><td>\$spacer\$name</td><td>\$manage</td></tr>";
-		$tree->init($data);
-		$ptree = $tree->get_tree(0, $str);
-		$this->getView()->assign("tree", $ptree);
+//		$tree = new Tree();
+//		$sql = "select * from `oa_node`";
+//		$res = $node->query($sql)->results();
+//		$data = array();
+//		foreach ($res as $k=>$v){
+//			$data[$k]['id'] = $v['id'];
+//			$data[$k]['parentid']=  $v['parentid'];
+//			$data[$k]['name'] = $v['name'];
+//			$data[$k]['manage'] = "删除|修改";
+//		}
+//		$str = "<tr><td>\$id</td><td>\$spacer\$name</td><td>\$manage</td></tr>";
+//		$tree->init($data);
+//		$ptree = $tree->get_tree(0, $str);
+//		$this->getView()->assign("tree", $ptree);
 
 	}
 
@@ -57,7 +57,7 @@ class NodeController extends BaseController{
 	}
 	public function delete()
 	{
-	
+		
 	
 	}
 }
