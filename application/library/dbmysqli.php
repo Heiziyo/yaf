@@ -9,7 +9,7 @@
 
 //加载配置文件
 $config = Yaf_Application::app()->getConfig();
-class Mysqli
+class dbmysqli
 {
     /**
      * 打开数据库连接,有可能不真实连接数据库
@@ -19,14 +19,11 @@ class Mysqli
      */
     public function open($config) {
         $this->config = $config;
-        if($config['autoconnect'] == 1) {
-            $this->connect();
-        }
+        $this->connect();
+
     }
 
     public function connect(){
-        var_dump($this->config);
-        $this->link = new mysqli($this->config['hostname'], $this->config['username'], $this->config['password'], $this->config['database'], $this->config['port']?intval($this->config['port']):3306);
-
+        $this->link = new mysqli($this->config['host'], $this->config['user'], $this->config['pwd'], $this->config['name'], $this->config['port']?intval($this->config['port']):3306);
     }
 }

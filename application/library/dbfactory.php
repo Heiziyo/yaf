@@ -1,7 +1,6 @@
 <?php
 class dbfactory{
 
-
     /**
      * 当前数据库工厂类静态实例
      */
@@ -24,13 +23,9 @@ class dbfactory{
     }
     public static function getInstance($db_config = ''){
         if($db_config == '') {
-            $db_config = Yaf_Application::app()->getConfig();
+            $db_config = Yaf_Application::app()->getConfig()->config->toArray();
         }
-        $a = $db_config;
-        if (is_object($a)){
-            $db_config = objectToArray($a);
-        }
-        //$db_config = $db_config["database"]['config'];
+
         if(dbfactory::$db_factory == null){
             dbfactory::$db_factory = new dbfactory();
         }
@@ -44,7 +39,6 @@ class dbfactory{
      * @param $db_name 数据库配置名称
      */
     public function get_database($db_name) {
-
         if(!isset($this->db_list[$db_name]) || !is_object($this->db_list[$db_name])) {
             $this->db_list[$db_name] = $this->connect($db_name);
         }
@@ -56,21 +50,22 @@ class dbfactory{
      * @return object
      */
     public function connect($db_name) {
-        var_dump($this->db_config["$db_name"]);
+
         $object = null;
-        switch($this->db_config[$db_name]['type']) {
+        switch($this->db_config['type']) {
             case 'mysql' :
-                Yaf_Loader::import("Db/mysql");
+                Yaf_Loader::import("/mysql.php");
                 $object = new mysql();
                 break;
             case 'mysqli' :
-                Yaf_Loader::import("Db/mysqli");
+                Yaf_Loader::import("/dbmysqli.php");
+                $object = new dbmysqli();
                 break;
             default :
-                Yaf_Loader::import("mysql");
+                Yaf_Loader::import("/mysql.php");
                 $object = new mysql();
         }
-        $object->open($this->db_config[$db_name]);
+        $object->open($this->db_config);
         return $object;
     }
 
@@ -88,6 +83,6 @@ class dbfactory{
      * 析构函数
      */
     public function __destruct() {
-        $this->close();
+        //$this->close();
     }
 }

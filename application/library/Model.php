@@ -17,8 +17,10 @@ class Model{
 		if (!isset($this->db_config[$this->db_setting])) {
 			$this->db_setting = 'database';
 		}
-		$this->table_name = $this->db_config[$this->db_setting]['config']['tablepre'].$this->table_name;
-		$this->db_tablepre = $this->db_config[$this->db_setting]['config']['tablepre'];
+		$this->db_config = $this->db_config->database->config->toArray();
+
+		//$this->table_name = $this->db_config[$this->db_setting]['config']['tablepre'].$this->table_name;
+		//$this->db_tablepre = $this->db_config[$this->db_setting]['config']['tablepre'];
 		$this->db = dbfactory::getInstance($this->db_config)->get_database($this->db_setting);
 	}
 }

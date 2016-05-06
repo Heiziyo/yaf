@@ -5,6 +5,7 @@ class NodeController extends BaseController{
 	public function indexAction()
 	{
 		$node = new NodeModel();
+		
 //		$tree = new Tree();
 //		$sql = "select * from `oa_node`";
 //		$res = $node->query($sql)->results();
