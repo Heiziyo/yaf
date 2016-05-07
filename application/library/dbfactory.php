@@ -38,11 +38,19 @@ class dbfactory{
      * 获取数据库操作实例
      * @param $db_name 数据库配置名称
      */
+//    public function get_database($db_name) {
+//        if(!isset($this->db_list[$db_name]) || !is_object($this->db_list[$db_name])) {
+//            $this->db_list[$db_name] = $this->connect($db_name);
+//        }
+//        return $this->db_list[$db_name];
+//    }
+    /**
+     * 获取数据库操作实例
+     * @param $db_name 数据库配置名称
+     */
     public function get_database($db_name) {
-        if(!isset($this->db_list[$db_name]) || !is_object($this->db_list[$db_name])) {
-            $this->db_list[$db_name] = $this->connect($db_name);
-        }
-        return $this->db_list[$db_name];
+       $this->db = $this->connect($db_name);
+       return $this->db;
     }
     /**
      *  加载数据库驱动
@@ -74,8 +82,10 @@ class dbfactory{
      * @return void
      */
     protected function close() {
+
         foreach($this->db_list as $db) {
-            $db->close();
+
+            //$db->close();
         }
     }
 
@@ -83,6 +93,6 @@ class dbfactory{
      * 析构函数
      */
     public function __destruct() {
-        //$this->close();
+        $this->close();
     }
 }

@@ -53,7 +53,7 @@
 	                        	</tr>
                         	</thead>
                         	<tbody>
-                        		<?php //echo $tree;?>
+                        		<?php echo $tree;?>
                         	</tbody>
                         </table>
                     </div>
