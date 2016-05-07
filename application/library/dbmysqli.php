@@ -94,7 +94,6 @@ class dbmysqli
         if(!is_object($this->lastqueryid)) {
             return $this->lastqueryid;
         }
-
         $datalist = array();
         while(($rs = $this->fetch_next()) != false) {
             if($key) {
@@ -124,7 +123,7 @@ class dbmysqli
         array_walk($field, array($this, 'add_special_char'));
         $data = implode(',', $field);
 
-        $sql = 'SELECT '.$data.' FROM `'.$this->config['database'].'`.`'.$table.'`'.$where.$group.$order.$limit;
+        $sql = 'SELECT '.$data.' FROM `'.$this->config['name'].'`.`'.$table.'`'.$where.$group.$order.$limit;
         $this->execute($sql);
         $res = $this->fetch_next();
         $this->free_result();
@@ -185,7 +184,7 @@ class dbmysqli
         $value = implode (',', $valuedata);
 
         $cmd = $replace ? 'REPLACE INTO' : 'INSERT INTO';
-        $sql = $cmd.' `'.$this->config['database'].'`.`'.$table.'`('.$field.') VALUES ('.$value.')';
+        $sql = $cmd.' `'.$this->config['name'].'`.`'.$table.'`('.$field.') VALUES ('.$value.')';
         $return = $this->execute($sql);
         return $return_insert_id ? $this->insert_id() : $return;
     }
@@ -251,7 +250,7 @@ class dbmysqli
             return false;
         }
 
-        $sql = 'UPDATE `'.$this->config['database'].'`.`'.$table.'` SET '.$field.$where;
+        $sql = 'UPDATE `'.$this->config['name'].'`.`'.$table.'` SET '.$field.$where;
         return $this->execute($sql);
     }
 
@@ -267,7 +266,7 @@ class dbmysqli
             return false;
         }
         $where = ' WHERE '.$where;
-        $sql = 'DELETE FROM `'.$this->config['database'].'`.`'.$table.'`'.$where;
+        $sql = 'DELETE FROM `'.$this->config['name'].'`.`'.$table.'`'.$where;
         return $this->execute($sql);
     }
 
@@ -339,7 +338,7 @@ class dbmysqli
         $tables = array();
         $this->execute("SHOW TABLES");
         while($r = $this->fetch_next()) {
-            $tables[] = $r['Tables_in_'.$this->config['database']];
+            $tables[] = $r['Tables_in_'.$this->config['name']];
         }
         return $tables;
     }

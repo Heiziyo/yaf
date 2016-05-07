@@ -31,11 +31,12 @@ class NodeController extends BaseController{
 			$data['action'] = $_POST['action'];
 			$data['controller'] = $_POST['controller'];
 			$data['status'] = $_POST['status'];
-			//$sql = 'insert into oa_node (`parentid`,`name`,`model`,`controller`,`action`,`status`) values ("'.$parentid.'","'.$name.'","'.$model.'","'.$controller.'","'.$action.'","'.$status.'")';
-			$node->insert($data);
+			$res = $node->insert($data);
+			if($res){
+				$this->forward("index");
+			}
 		}else{
 			$tree = new Tree();
-
 			$res = $node->select();
 			$data = array();
 			foreach ($res as $k=>$v){

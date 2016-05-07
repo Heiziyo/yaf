@@ -18,6 +18,15 @@ class Bootstrap extends Yaf_Bootstrap_Abstract{
         $AutoloadPlugin = new AutoloadPlugin();
         $dispatcher->registerPlugin($AutoloadPlugin);
     }
+    public function _initSmarty(Yaf_Dispatcher $dispatcher){
+        $smarty = new Smarty_Adapter(null, Yaf_Registry::get("config")->get("smarty"));
+
+        Yaf_Dispatcher::getInstance()->setView($smarty);
+    }
+    //关闭系统渲染
+    public function _intView(Yaf_Dispatcher $dispatcher){
+        Yaf_Dispatcher::getInstance()->disableView();//关闭其自动渲染
+    }
     public function _initRoute(Yaf_Dispatcher $dispatcher) {
         //echo "_initRoute call second<br/>\n";
         //$router = Yaf_Dispatcher::getInstance()->getRouter();

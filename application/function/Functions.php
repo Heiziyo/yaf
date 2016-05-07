@@ -16,3 +16,12 @@ function objectToArray($e){
     }
     return $e;
 }
+
+
+function success($url="",$message="",$time="")
+{
+
+    $str = "";
+
+
+}

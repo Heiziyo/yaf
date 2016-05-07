@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors','Off');
 /* INI配置文件支持常量替换 */
 define ("APPLICATION_PATH", dirname(__FILE__) . "/application");
 /**
